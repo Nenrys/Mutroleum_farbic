@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "mutroleum",
+  "version": "${version}",
+
+  "name": "Mutroleum",
+  "description": "A mod about a living liquid with symbiotic tendencies",
+  "authors": [
+    "Nenrys"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+
+  "license": "MIT",
+  "icon": "assets/modid/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.nenrys.mutroleum.Mutroleum"
+    ]
+  },
+  "mixins": [
+    "mutroleum.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "fabric": "*",
+    "minecraft": "1.18.x",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
