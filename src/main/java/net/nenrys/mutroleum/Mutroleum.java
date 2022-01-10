@@ -16,7 +16,7 @@ public class Mutroleum implements ModInitializer {
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
 
-		//testing github
+		//testing github1
 
 		LOGGER.info("Hello Fabric world!");
 	}
