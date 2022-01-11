@@ -7,6 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.nenrys.mutroleum.blocks.ModBlocks;
 import net.nenrys.mutroleum.items.ModItems;
+import net.nenrys.mutroleum.world.ores.MutroleumOreClass;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -28,4 +29,5 @@ public class Mutroleum implements ModInitializer {
 		LOGGER.info("Initializing");
 		ModItems.registerModItems();
 		ModBlocks.registerModItems();
+		MutroleumOreClass.registerOreFeatures();
 	}}
