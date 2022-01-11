@@ -2,11 +2,10 @@ import pyautogui as pgui
 import shutil
 import os
 
-
 def writetomoditems(iname):
 
     itemstring = "\tpublic static final Item " + iname.upper() + \
-                 " = new Item(new FabricItemSettings().group(ItemGroup.MISC));"
+                 " = new Item(new FabricItemSettings().group(Mutroleum.Mutroleum_Group));"
     registerstring = "\t\tregisterItem(\"" + iname + "\", " + iname.upper() + ");"
     newlinelist = []
 
@@ -37,7 +36,6 @@ def writetomoditems(iname):
 
 
 def writelang(lname,aname):
-
     langstring = '  \"item.mutroleum.' + lname + '\": \"' + aname + '\",'
 
     path = os.path.realpath(os.path.join(os.path.dirname(__file__),

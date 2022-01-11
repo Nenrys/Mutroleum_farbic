@@ -10,8 +10,8 @@ import net.nenrys.mutroleum.Mutroleum;
 public class ModItems {
 
     //__0 simple items, comment reference for python (don't remove)
-    public static final Item P_MUTROLEUM = new Item(new FabricItemSettings().group(ItemGroup.MISC));
-    public static final Item C_MUTROLEUM = new Item(new FabricItemSettings().group(ItemGroup.MISC));
+    public static final Item P_MUTROLEUM = new Item(new FabricItemSettings().group(Mutroleum.MUTROLEUM_GROUP));
+    public static final Item C_MUTROLEUM = new Item(new FabricItemSettings().group(Mutroleum.MUTROLEUM_GROUP));
 
     private static void registerItem(String name, Item item) {
         Registry.register(Registry.ITEM, new Identifier(Mutroleum.MOD_ID, name), item);
