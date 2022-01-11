@@ -1,5 +1,6 @@
 {
   "variants": {
-    "": { "model": "mutroleum:block/p_mutroleum_block" }
+    "heated=false": { "model": "mutroleum:block/p_mutroleum_block" },
+    "heated=true": { "model": "mutroleum:block/p_mutroleum_block_heated" }
   }
 }

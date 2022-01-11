@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube_all",
+  "textures": {
+    "all": "mutroleum:block/p_mutroleum_block_heated"
+  }
+}

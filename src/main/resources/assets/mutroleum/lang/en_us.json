@@ -4,6 +4,7 @@
   "item.mutroleum.c_mutroleum": "Coagulated Mutroleum",
 
   "__1": "Entrypoint for pythonscript to add new simple block. Don't remove",
+  "block.mutroleum.ore_mutroleum": "Mutroleum Ore",
   "block.mutroleum.p_mutroleum_block": "Petrified Mutroleum Block",
 
   "itemGroup.mutroleum.mutroleum_group": "Mutroleum"

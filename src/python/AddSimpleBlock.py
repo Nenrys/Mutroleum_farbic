@@ -135,10 +135,13 @@ def copyblockloottable(name):
 codename = pgui.prompt("Choose codename:")
 actualname = pgui.prompt("Choose actual name")
 
-writetomodblocks(codename)
-copyblockstates(codename)
-writetolangfile(codename, actualname)
-copyblockmodel(codename)
-copyitemmodel(codename)
-copyblocktexture(codename)
-copyblockloottable(codename)
+if codename != '0':
+    writetomodblocks(codename)
+    copyblockstates(codename)
+    writetolangfile(codename, actualname)
+    copyblockmodel(codename)
+    copyitemmodel(codename)
+    copyblocktexture(codename)
+    copyblockloottable(codename)
+
+

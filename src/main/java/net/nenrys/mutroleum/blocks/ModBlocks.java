@@ -2,19 +2,20 @@ package net.nenrys.mutroleum.blocks;
 
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.Material;
+import net.minecraft.block.*;
 import net.minecraft.item.BlockItem;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.intprovider.UniformIntProvider;
 import net.minecraft.util.registry.Registry;
 import net.nenrys.mutroleum.Mutroleum;
-import net.nenrys.mutroleum.items.ModItems;
 
 public class ModBlocks {
 
     //__0 simple blocks, comment reference for python (don't remove)
-    public static final Block P_MUTROLEUM_BLOCK = new Block(
-            FabricBlockSettings.of(Material.AMETHYST).strength(2.0f));
+	public static final Block ORE_MUTROLEUM = new OreBlock(AbstractBlock.Settings.of(
+            Material.STONE).requiresTool().strength(3.0f, 3.0f), UniformIntProvider.create(3, 7));
+    public static final Block P_MUTROLEUM_BLOCK = new PetrifiedMutroleumBlock(
+            FabricBlockSettings.of(Material.AMETHYST).strength(2.0f).requiresTool().ticksRandomly());
 
     //register a single block
     private static void registerBlock(String name, Block block) {
@@ -32,6 +33,7 @@ public class ModBlocks {
     //register all blocks
     private static void registerBlocks() {
         //__1 register simple blocks, entrypoint for python (don't remove)
+		registerBlockandItem("ore_mutroleum", ORE_MUTROLEUM);
         registerBlockandItem("p_mutroleum_block", P_MUTROLEUM_BLOCK);
     }
 

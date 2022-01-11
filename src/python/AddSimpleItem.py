@@ -85,7 +85,10 @@ def copytexture(tname):
 codename = pgui.prompt("Choose codename:")
 actualname = pgui.prompt("Choose actual name")
 
-writetomoditems(codename)
-writelang(codename, actualname)
-copymodel(codename)
-copytexture(codename)
+if codename != '0':
+    writetomoditems(codename)
+    writelang(codename, actualname)
+    copymodel(codename)
+    copytexture(codename)
+
+
