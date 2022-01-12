@@ -9,12 +9,14 @@ import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.stat.Stats;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.tag.FluidTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
+import net.nenrys.mutroleum.fluids.ModFluids;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Random;
@@ -34,19 +36,21 @@ public class PetrifiedMutroleumBlock extends Block {
 
     @Override
     public void afterBreak(World world, PlayerEntity player, BlockPos pos, BlockState state, @Nullable BlockEntity blockEntity, ItemStack stack) {
-        super.afterBreak(world, player, pos, state, blockEntity, stack);
-        if (EnchantmentHelper.getLevel(Enchantments.SILK_TOUCH, stack) == 0) {
-            if (world.getDimension().isUltrawarm()) {
-                world.removeBlock(pos, false);
-                return;
+        player.incrementStat(Stats.MINED.getOrCreateStat(this));
+        player.addExhaustion(0.005f);
+        if (!state.get(HEATED)) {
+            Block.dropStacks(state, world, pos, blockEntity, player, stack);
+        } else {
+            if (EnchantmentHelper.getLevel(Enchantments.SILK_TOUCH, stack) == 0) {
+                if (world.getDimension().isUltrawarm()) {
+                    world.removeBlock(pos, false);
+                    return;
+                }
+                //removed stuff from iceblock, may need to put back
             }
-            //removed stuff from iceblock, may need to put back
-            if (state.get(HEATED)) {
-                return;
-            }
-
-            world.setBlockState(pos, Blocks.WATER.getDefaultState());
+            world.setBlockState(pos, ModFluids.DEAD_MUTROLEUM_BLOCK.getDefaultState());
         }
+
     }
 
     @Override

@@ -37,7 +37,7 @@ public class ModBlocks {
         registerBlockandItem("p_mutroleum_block", P_MUTROLEUM_BLOCK);
     }
 
-    public static void registerModItems() {
+    public static void registerModBlocks() {
         Mutroleum.LOGGER.info("Registring mod blocks for " + Mutroleum.MOD_ID);
 
         registerBlocks();

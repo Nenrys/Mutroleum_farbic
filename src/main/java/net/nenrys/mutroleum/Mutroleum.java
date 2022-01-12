@@ -2,10 +2,10 @@ package net.nenrys.mutroleum;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
 import net.nenrys.mutroleum.blocks.ModBlocks;
+import net.nenrys.mutroleum.fluids.ModFluids;
 import net.nenrys.mutroleum.items.ModItems;
 import net.nenrys.mutroleum.world.ores.MutroleumOreClass;
 import org.apache.logging.log4j.LogManager;
@@ -22,12 +22,16 @@ public class Mutroleum implements ModInitializer {
 
 	public static final ItemGroup MUTROLEUM_GROUP =
 			FabricItemGroupBuilder.build(
-			new Identifier(MOD_ID, "mutroleum_group"), () -> new ItemStack(ModItems.P_MUTROLEUM));
+					new Identifier(MOD_ID, "mutroleum_group"), () -> new ItemStack(ModItems.P_MUTROLEUM));
 
 	@Override
 	public void onInitialize() {
+
+
 		LOGGER.info("Initializing");
 		ModItems.registerModItems();
-		ModBlocks.registerModItems();
+		ModBlocks.registerModBlocks();
 		MutroleumOreClass.registerOreFeatures();
-	}}
+		ModFluids.registerFluids();
+	}
+}
