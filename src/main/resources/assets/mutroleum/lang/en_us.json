@@ -1,9 +1,13 @@
 {
   "__0": "Entrypoint for pythonscript to add new simple item. Don't remove",
+  "item.mutroleum.sceptre1": "Sceptre I",
   "item.mutroleum.p_mutroleum": "Petrified Mutroleum",
   "item.mutroleum.c_mutroleum": "Coagulated Mutroleum",
 
   "__1": "Entrypoint for pythonscript to add new simple block. Don't remove",
+  "block.mutroleum.organismchamber": "Organism Chamber",
+  "block.mutroleum.mutrator": "Mutrator",
+  "block.mutroleum.wavelength_detector": "Wavelength Detector",
   "block.mutroleum.ore_mutroleum": "Mutroleum Ore",
   "block.mutroleum.p_mutroleum_block": "Petrified Mutroleum Block",
 

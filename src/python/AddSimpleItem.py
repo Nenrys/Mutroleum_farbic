@@ -5,7 +5,7 @@ import os
 def writetomoditems(iname):
 
     itemstring = "\tpublic static final Item " + iname.upper() + \
-                 " = new Item(new FabricItemSettings().group(Mutroleum.Mutroleum_Group));"
+                 " = new Item(new FabricItemSettings().group(Mutroleum.MUTROLEUM_GROUP));"
     registerstring = "\t\tregisterItem(\"" + iname + "\", " + iname.upper() + ");"
     newlinelist = []
 
@@ -81,14 +81,14 @@ def copytexture(tname):
                                               'mutroleum', 'textures', 'item', tname + '.png'))
     shutil.copyfile(copyfile, pastefile)
 
+if __name__ == '__main__':
+    codename = pgui.prompt("Choose codename:")
+    actualname = pgui.prompt("Choose actual name")
 
-codename = pgui.prompt("Choose codename:")
-actualname = pgui.prompt("Choose actual name")
-
-if codename != '0':
-    writetomoditems(codename)
-    writelang(codename, actualname)
-    copymodel(codename)
-    copytexture(codename)
+    if codename != '0':
+        writetomoditems(codename)
+        writelang(codename, actualname)
+        copymodel(codename)
+        copytexture(codename)
 
 

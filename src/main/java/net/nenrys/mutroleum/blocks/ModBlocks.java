@@ -12,6 +12,12 @@ import net.nenrys.mutroleum.Mutroleum;
 public class ModBlocks {
 
     //__0 simple blocks, comment reference for python (don't remove)
+	public static final Block ORGANISMCHAMBER = new OrganismChamber(
+			FabricBlockSettings.of(Material.STONE).strength(3.0f));
+	public static final Block MUTRATOR = new Mutrator(
+			FabricBlockSettings.of(Material.STONE).strength(3.0f));
+	public static final Block WAVELENGTH_DETECTOR = new WavelengthDetector(
+			FabricBlockSettings.of(Material.STONE).strength(3.0f));
 	public static final Block ORE_MUTROLEUM = new OreBlock(AbstractBlock.Settings.of(
             Material.STONE).requiresTool().strength(3.0f, 3.0f), UniformIntProvider.create(3, 7));
     public static final Block P_MUTROLEUM_BLOCK = new PetrifiedMutroleumBlock(
@@ -33,6 +39,9 @@ public class ModBlocks {
     //register all blocks
     private static void registerBlocks() {
         //__1 register simple blocks, entrypoint for python (don't remove)
+		registerBlockandItem("organismchamber", ORGANISMCHAMBER);
+		registerBlockandItem("mutrator", MUTRATOR);
+		registerBlockandItem("wavelength_detector", WAVELENGTH_DETECTOR);
 		registerBlockandItem("ore_mutroleum", ORE_MUTROLEUM);
         registerBlockandItem("p_mutroleum_block", P_MUTROLEUM_BLOCK);
     }

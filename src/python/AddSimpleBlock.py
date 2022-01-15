@@ -131,17 +131,17 @@ def copyblockloottable(name):
     with open(os.path.join(filedir, name + '.json'), 'w') as jsonfile:
         jsonfile.writelines(newlines)
 
+if __name__ == '__main__':
+    codename = pgui.prompt("Choose codename:")
+    actualname = pgui.prompt("Choose actual name")
 
-codename = pgui.prompt("Choose codename:")
-actualname = pgui.prompt("Choose actual name")
-
-if codename != '0':
-    writetomodblocks(codename)
-    copyblockstates(codename)
-    writetolangfile(codename, actualname)
-    copyblockmodel(codename)
-    copyitemmodel(codename)
-    copyblocktexture(codename)
-    copyblockloottable(codename)
+    if codename != '0':
+        writetomodblocks(codename)
+        copyblockstates(codename)
+        writetolangfile(codename, actualname)
+        copyblockmodel(codename)
+        copyitemmodel(codename)
+        copyblocktexture(codename)
+        copyblockloottable(codename)
 
 
