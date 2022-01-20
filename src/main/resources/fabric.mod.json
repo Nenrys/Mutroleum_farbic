@@ -20,6 +20,9 @@
   "entrypoints": {
     "main": [
       "net.nenrys.mutroleum.Mutroleum"
+    ],
+    "client": [
+      "net.nenrys.mutroleum.MutroleumClient"
     ]
   },
   "mixins": [

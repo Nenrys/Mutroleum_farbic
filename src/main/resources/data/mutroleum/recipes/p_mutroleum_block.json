@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "WWW",
+    "WWW",
+    "WWW"
+  ],
+  "key": {
+    "W": {
+      "item": "mutroleum:p_mutroleum"
+    }
+  },
+  "result": {
+    "item": "mutroleum:p_mutroleum_block",
+    "count": 1
+  }
+}

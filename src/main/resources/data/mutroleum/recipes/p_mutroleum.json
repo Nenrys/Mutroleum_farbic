@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients":
+  [
+    {
+      "item": "mutroleum:p_mutroleum_block"
+    }
+  ],
+  "result":
+  {
+    "item": "mutroleum:p_mutroleum",
+    "count": 9
+  }
+}

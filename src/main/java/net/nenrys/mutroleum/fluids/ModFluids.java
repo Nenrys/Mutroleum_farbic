@@ -28,6 +28,7 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.*;
 import net.nenrys.mutroleum.Mutroleum;
+import net.nenrys.mutroleum.items.DeadMutroleumBucket;
 
 import java.util.Random;
 
@@ -92,21 +93,12 @@ public abstract class ModFluids extends FlowableFluid {
                 new Identifier(MOD_ID, "flowing_dead_mutroleum"), new DeadMutroleum.Flowing());
         ModFluids.DEAD_MUTROLEUM_BUCKET = Registry.register(Registry.ITEM,
                 new Identifier(MOD_ID, "dead_mutroleum_bucket"),
-                new BucketItem(ModFluids.STILL_DEAD_MUTROLEUM,
+                new DeadMutroleumBucket(ModFluids.STILL_DEAD_MUTROLEUM,
                         new FabricItemSettings().recipeRemainder(Items.BUCKET).maxCount(1)
                                 .group(Mutroleum.MUTROLEUM_GROUP)));
 
         ModFluids.DEAD_MUTROLEUM_BLOCK = Registry.register(Registry.BLOCK,
                 new Identifier(MOD_ID, "dead_mutroleum"),
-                new FluidBlock(ModFluids.STILL_DEAD_MUTROLEUM, FabricBlockSettings.copy(Blocks.WATER)){
-                    @Override
-                    public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
-                        if (entity instanceof PlayerEntity) {
-                            ((PlayerEntity) entity).addStatusEffect(
-                                    new StatusEffectInstance(StatusEffects.POISON,20));
-                        }
-
-                    }
-                });
+                new DeadMutroleumFluidBlock(ModFluids.STILL_DEAD_MUTROLEUM, FabricBlockSettings.copy(Blocks.WATER)));
     }
 }

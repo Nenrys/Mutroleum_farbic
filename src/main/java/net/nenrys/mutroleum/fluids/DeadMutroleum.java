@@ -6,8 +6,17 @@ import net.minecraft.fluid.FluidState;
 import net.minecraft.item.Item;
 import net.minecraft.state.StateManager;
 import net.minecraft.state.property.Properties;
+import net.nenrys.mutroleum.genetics.IHasGenes;
+import net.nenrys.mutroleum.genetics.Species;
 
-public abstract class DeadMutroleum extends ModFluids {
+public abstract class DeadMutroleum extends ModFluids implements IHasGenes {
+
+    Species species = new Species("__default__");
+
+    @Override
+    public Species getSpecies() {
+        return species;
+    }
 
     @Override
     public Fluid getStill() {
