@@ -1,8 +1,10 @@
 {
   "__0": "Entrypoint for pythonscript to add new simple item. Don't remove",
+  "item.mutroleum.testspecies": "Test Species",
   "item.mutroleum.sceptre1": "Sceptre I",
   "item.mutroleum.p_mutroleum": "Petrified Mutroleum",
   "item.mutroleum.c_mutroleum": "Coagulated Mutroleum",
+  "item.mutroleum.dead_mutroleum_bucket": "Bucket of Dead Mutroleum",
 
   "__1": "Entrypoint for pythonscript to add new simple block. Don't remove",
   "block.mutroleum.organismchamber": "Organism Chamber",

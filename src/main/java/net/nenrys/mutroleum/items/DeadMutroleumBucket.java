@@ -7,51 +7,73 @@ import net.minecraft.block.Material;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.FlowableFluid;
 import net.minecraft.fluid.Fluid;
-import net.minecraft.fluid.FluidState;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.BucketItem;
+import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.tag.FluidTags;
+import net.minecraft.text.LiteralText;
+import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.nenrys.mutroleum.fluids.DeadMutroleumFluidBlock;
+import net.nenrys.mutroleum.fluids.DeadMutroleum;
+import net.nenrys.mutroleum.fluids.ModFluids;
 import net.nenrys.mutroleum.genetics.IHasGenes;
 import net.nenrys.mutroleum.genetics.Species;
 import net.nenrys.mutroleum.genetics.SpeciesColors;
 import org.jetbrains.annotations.Nullable;
 
+
 public class DeadMutroleumBucket extends BucketItem implements IHasGenes {
 
     private final Fluid fluid;
-    public Species species = new Species();
-    private BlockState statetoset;
 
     public DeadMutroleumBucket(Fluid fluid, Settings settings) {
         super(fluid, settings);
         this.fluid = fluid;
-        updateState();
     }
 
-    private void updateState() {
-        statetoset = fluid.getDefaultState().getBlockState().with(
-                DeadMutroleumFluidBlock.COLOR, SpeciesColors.getBlockStateColor(this));
+    @Override
+    public ItemStack getDefaultStack() {
+        ItemStack stack = new ItemStack(this);
+        this.addSpeciesToItem(stack, new Species("getdefaultstack"));
+        return stack;
+    }
+
+    @Override
+    public Species getSpecies() {
+        return this.getSpeciesFromItem(this.getDefaultStack());
+    }
+
+    @Override
+    public void appendStacks(ItemGroup group, DefaultedList<ItemStack> stacks) {
+        if (this.isIn(group)) {
+            ItemStack stack = new ItemStack(this);
+            this.addSpeciesToItem(stack, new Species("appendstacks"));
+            stacks.add(stack);
+        }
     }
 
     @Override
     public boolean placeFluid(@Nullable PlayerEntity player, World world, BlockPos pos, @Nullable BlockHitResult hitResult) {
-        updateState();
+
+        assert player != null;
+        ItemStack itemstack = player.getMainHandStack();
+        FlowableFluid fluidtoput = ModFluids.getFluidfromint(SpeciesColors.getColorIntFromSpecies(this.getSpeciesFromItem(itemstack))[0]);
+        player.sendMessage(new LiteralText("Gotten fluid: " + fluidtoput.getDefaultState().get(DeadMutroleum.COLOR)),false);
         boolean bl2;
-        if (!(fluid instanceof FlowableFluid)) {
+        if (!(this.fluid instanceof FlowableFluid)) {
             return false;
         }
         BlockState blockState = world.getBlockState(pos);
         Block block = blockState.getBlock();
         Material material = blockState.getMaterial();
         boolean bl = blockState.canBucketPlace(this.fluid);
-        boolean bl3 = bl2 = blockState.isAir() || bl || block instanceof FluidFillable && ((FluidFillable)((Object)block)).canFillWithFluid(world, pos, blockState, this.fluid);
+        boolean bl3 = bl2 = blockState.isAir() || bl || block instanceof FluidFillable && ((FluidFillable) block).canFillWithFluid(world, pos, blockState, fluidtoput);
         if (!bl2) {
             return hitResult != null && this.placeFluid(player, world, hitResult.getBlockPos().offset(hitResult.getSide()), null);
         }
@@ -66,22 +88,17 @@ public class DeadMutroleumBucket extends BucketItem implements IHasGenes {
             return true;
         }
         if (block instanceof FluidFillable && this.fluid == Fluids.WATER) {
-            ((FluidFillable)((Object)block)).tryFillWithFluid(world, pos, blockState, ((FlowableFluid)this.fluid).getStill(false));
+            ((FluidFillable) block).tryFillWithFluid(world, pos, blockState, fluidtoput.getStill(false));
             this.playEmptyingSound(player, world, pos);
             return true;
         }
         if (!world.isClient && bl && !material.isLiquid()) {
             world.breakBlock(pos, true);
         }
-        if (world.setBlockState(pos, statetoset, Block.NOTIFY_ALL | Block.REDRAW_ON_MAIN_THREAD) || blockState.getFluidState().isStill()) {
+        if (world.setBlockState(pos, fluidtoput.getDefaultState().getBlockState(), Block.NOTIFY_ALL | Block.REDRAW_ON_MAIN_THREAD) || blockState.getFluidState().isStill()) {
             this.playEmptyingSound(player, world, pos);
             return true;
         }
         return false;
-    }
-
-    @Override
-    public Species getSpecies() {
-        return this.species;
     }
 }

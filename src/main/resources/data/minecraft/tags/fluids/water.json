@@ -2,7 +2,38 @@
   "replace": false,
   "values":
   [
-    "mutroleum:dead_mutroleum",
-    "mutroleum:flowing_dead_mutroleum"
+    "mutroleum:flowing_dead_mutroleum_white",
+    "mutroleum:flowing_dead_mutroleum_lightgray",
+    "mutroleum:flowing_dead_mutroleum_gray",
+    "mutroleum:flowing_dead_mutroleum_black",
+    "mutroleum:flowing_dead_mutroleum_pink",
+    "mutroleum:flowing_dead_mutroleum_red",
+    "mutroleum:flowing_dead_mutroleum_magenta",
+    "mutroleum:flowing_dead_mutroleum_purple",
+    "mutroleum:flowing_dead_mutroleum_blue",
+    "mutroleum:flowing_dead_mutroleum_lightblue",
+    "mutroleum:flowing_dead_mutroleum_cyan",
+    "mutroleum:flowing_dead_mutroleum_green",
+    "mutroleum:flowing_dead_mutroleum_lime",
+    "mutroleum:flowing_dead_mutroleum_yellow",
+    "mutroleum:flowing_dead_mutroleum_orange",
+    "mutroleum:flowing_dead_mutroleum_brown",
+
+    "mutroleum:flowing_dead_mutroleum_white",
+    "mutroleum:flowing_dead_mutroleum_lightgray",
+    "mutroleum:flowing_dead_mutroleum_gray",
+    "mutroleum:flowing_dead_mutroleum_black",
+    "mutroleum:flowing_dead_mutroleum_pink",
+    "mutroleum:flowing_dead_mutroleum_red",
+    "mutroleum:flowing_dead_mutroleum_magenta",
+    "mutroleum:flowing_dead_mutroleum_purple",
+    "mutroleum:flowing_dead_mutroleum_blue",
+    "mutroleum:flowing_dead_mutroleum_lightblue",
+    "mutroleum:flowing_dead_mutroleum_cyan",
+    "mutroleum:flowing_dead_mutroleum_green",
+    "mutroleum:flowing_dead_mutroleum_lime",
+    "mutroleum:flowing_dead_mutroleum_yellow",
+    "mutroleum:flowing_dead_mutroleum_orange",
+    "mutroleum:flowing_dead_mutroleum_brown"
   ]
 }

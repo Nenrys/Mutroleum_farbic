@@ -10,6 +10,7 @@ import net.nenrys.mutroleum.Mutroleum;
 public class ModItems {
 
     //__0 simple items, comment reference for python (don't remove)
+	public static final Item TESTSPECIES = new TestSpecies(new FabricItemSettings().group(Mutroleum.MUTROLEUM_GROUP));
 	public static final Item SCEPTRE1 = new Sceptre1(new FabricItemSettings().group(Mutroleum.MUTROLEUM_GROUP));
     public static final Item P_MUTROLEUM = new Item(new FabricItemSettings().group(Mutroleum.MUTROLEUM_GROUP));
     public static final Item C_MUTROLEUM = new Item(new FabricItemSettings().group(Mutroleum.MUTROLEUM_GROUP));
@@ -20,6 +21,7 @@ public class ModItems {
 
     private static void registerItems() {
         //__1 registering all items, also entrypoint for python (don't remove)
+		registerItem("testspecies", TESTSPECIES);
 		registerItem("sceptre1", SCEPTRE1);
         registerItem("p_mutroleum", P_MUTROLEUM);
         registerItem("c_mutroleum", C_MUTROLEUM);

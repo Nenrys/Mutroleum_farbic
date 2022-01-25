@@ -5,7 +5,7 @@ import AddSimpleItem as ASI
 def writetomoditems(iname, classname):
 
     itemstring = "\tpublic static final Item " + iname.upper() + \
-                 " = new " + classname + "(new FabricItemSettings().group(Mutroleum.MUTROLEUM.GROUP));"
+                 " = new " + classname + "(new FabricItemSettings().group(Mutroleum.MUTROLEUM_GROUP));"
     registerstring = "\t\tregisterItem(\"" + iname + "\", " + iname.upper() + ");"
     newlinelist = []
 

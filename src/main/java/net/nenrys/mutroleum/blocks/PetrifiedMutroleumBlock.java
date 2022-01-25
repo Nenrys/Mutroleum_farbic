@@ -47,7 +47,7 @@ public class PetrifiedMutroleumBlock extends Block {
                 }
                 //removed stuff from iceblock, may need to put back
             }
-            world.setBlockState(pos, ModFluids.DEAD_MUTROLEUM_BLOCK.getDefaultState());
+            world.setBlockState(pos, ModFluids.DEAD_MUTROLEUM_BLOCK_PURPLE.getDefaultState());
         }
 
     }

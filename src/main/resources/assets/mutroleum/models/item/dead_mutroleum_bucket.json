@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+	"layer0": "mutroleum:item/dead_mutroleum_bucket",
+    "layer1": "mutroleum:item/dead_mutroleum_bucket_fluid"
+  }
+}
