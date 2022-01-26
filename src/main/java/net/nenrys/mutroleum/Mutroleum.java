@@ -5,7 +5,9 @@ import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.item.*;
 import net.minecraft.util.Identifier;
 import net.nenrys.mutroleum.blocks.ModBlocks;
+import net.nenrys.mutroleum.blocks.blockentities.BlockEntities;
 import net.nenrys.mutroleum.fluids.ModFluids;
+import net.nenrys.mutroleum.gui.Guis;
 import net.nenrys.mutroleum.items.ModItems;
 import net.nenrys.mutroleum.misc.MutroleumCommands;
 import net.nenrys.mutroleum.world.ores.MutroleumOreClass;
@@ -35,5 +37,7 @@ public class Mutroleum implements ModInitializer {
 		MutroleumOreClass.registerOreFeatures();
 		ModFluids.registerFluids();
 		MutroleumCommands.registerCommands();
+		BlockEntities.registerBlockEntities();
+		Guis.registerGuis();
 	}
 }

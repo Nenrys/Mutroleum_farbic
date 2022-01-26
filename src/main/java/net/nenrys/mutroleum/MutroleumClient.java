@@ -13,6 +13,7 @@ import net.minecraft.world.BlockRenderView;
 import net.nenrys.mutroleum.fluids.DeadMutroleum;
 import net.nenrys.mutroleum.fluids.ModFluids;
 import net.nenrys.mutroleum.genetics.SpeciesColors;
+import net.nenrys.mutroleum.gui.Guis;
 import net.nenrys.mutroleum.items.ColorItems;
 import org.jetbrains.annotations.Nullable;
 
@@ -23,6 +24,8 @@ public class MutroleumClient implements ClientModInitializer {
         registerMutroleumFluids();
 
         ColorItems.registerColor();
+
+        Guis.registerGuisClient();
     }
 
     private static class MutroleumFluidRenderHandler extends SimpleFluidRenderHandler {

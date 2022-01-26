@@ -14,21 +14,24 @@ public interface IHasGenes {
     }
 
     default void addSpeciesToItem(ItemStack stack, Species species) {
-        StringBuilder stringtoput = new StringBuilder(species.getName() + "__");
         NbtCompound nbtCompound = stack.getOrCreateNbt();
+
+        String stringtoput = getStringfromSpecies(species);
+        nbtCompound.putString("species", stringtoput);
+    }
+
+    default String getStringfromSpecies(Species species) {
+        StringBuilder stringtoput = new StringBuilder("_n_" + species.getName() + "_s_");
+        stringtoput.append(species.getStage());
+        stringtoput.append("_g_");
         ArrayList<Gene> genes = species.getGenes();
         for (Gene gene : genes) {
             stringtoput.append(gene.toString());
         }
-
-        nbtCompound.putString("species", stringtoput.toString());
-    }
-
-    default String getStringfromSpecies(Species species) {
-        StringBuilder stringtoput = new StringBuilder(species.getName() + "__");
-        ArrayList<Gene> genes = species.getGenes();
-        for (Gene gene : genes) {
-            stringtoput.append(gene.toString());
+        stringtoput.append("_a_");
+        int[] attrs = species.getAttributes();
+        for (int attr:attrs) {
+            stringtoput.append(attr);
         }
         return stringtoput.toString();
     }
@@ -64,17 +67,36 @@ public interface IHasGenes {
             return new Species("Error Species, bad2");
         }
         String speciesstring = stack.getNbt().getString("species");
-        int nameindex = speciesstring.indexOf("__");
-        String name = speciesstring.substring(0, nameindex);
+
+        int nameindex = speciesstring.indexOf("_n_");
+        int stageindex = speciesstring.indexOf("_s_");
+        int geneindex = speciesstring.indexOf("_g_");
+        int attrsindex = speciesstring.indexOf("_a_");
+
+        String name = speciesstring.substring(nameindex + 3, stageindex);
         Species species = new Species(name);
-        String genestring = speciesstring.substring(nameindex + 2);
-        int geneindex = 0;
+
+        int stage = Integer.parseInt(speciesstring.substring(stageindex+3,geneindex));
+        species.setStage(stage);
+
+        String genestring = speciesstring.substring(geneindex+3,attrsindex);
+        int genenr = 0;
         for (int i = 0; i<6;i++) {
             for (int j = 0; j < Species.Chromlen[i];j++) {
-                species.setGene(i,j,Species.char2Gene(genestring.charAt(geneindex)));
-                geneindex += 1;
+                species.setGene(i,j,Species.char2Gene(genestring.charAt(genenr)));
+                genenr += 1;
             }
         }
+
+        int reg = Integer.parseInt(speciesstring.substring(attrsindex+3)) -1;
+        int pow = Integer.parseInt(speciesstring.substring(attrsindex+4)) -1;
+        int dom = Integer.parseInt(speciesstring.substring(attrsindex+5)) -1;
+        int pro = Integer.parseInt(speciesstring.substring(attrsindex+6)) -1;
+        species.addReg(reg);
+        species.addPow(pow);
+        species.addDom(dom);
+        species.addPro(pro);
+
         return species;
     }
 }

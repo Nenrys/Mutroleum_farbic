@@ -41,7 +41,8 @@ def writetomodblocks(name):
 
 def copyblockstates(name):
     filedir = os.path.realpath(os.path.join(os.path.dirname(__file__),
-                                            '..', 'main', 'resources', 'assets', 'mutroleum', 'blockstates'))
+                                            '..', 'main', 'resources',
+                                            'assets', 'mutroleum', 'blockstates', 'templates'))
     newlines = []
     with open(os.path.join(filedir, 'blockstatetemplate.json'), 'r') as jsonfile:
         filelines = jsonfile.readlines()
@@ -81,7 +82,7 @@ def writetolangfile(cname, aname):
 def copyblockmodel(name):
     filedir = os.path.realpath(os.path.join(os.path.dirname(__file__),
                                             '..', 'main', 'resources', 'assets', 'mutroleum', 'models',
-                                            'block'))
+                                            'block', 'templates'))
     newlines = []
     with open(os.path.join(filedir, 'blockmodeltemplate.json'), 'r') as jsonfile:
         filelines = jsonfile.readlines()
@@ -96,7 +97,7 @@ def copyblockmodel(name):
 def copyitemmodel(name):
     filedir = os.path.realpath(os.path.join(os.path.dirname(__file__),
                                             '..', 'main', 'resources', 'assets', 'mutroleum', 'models',
-                                            'item'))
+                                            'item', 'templates'))
     newlines = []
     with open(os.path.join(filedir, 'itemblockmodeltemplate.json'), 'r') as jsonfile:
         filelines = jsonfile.readlines()
@@ -118,8 +119,7 @@ def copyblocktexture(name):
 
 def copyblockloottable(name):
     filedir = os.path.realpath(os.path.join(os.path.dirname(__file__),
-                                            '..', 'main', 'resources', 'data', 'mutroleum', 'loot_tables',
-                                            'blocks'))
+                                            '..', 'main', 'resources', 'data', 'templates'))
     newlines = []
     with open(os.path.join(filedir, 'blockloottabletemplate.json'), 'r') as jsonfile:
         filelines = jsonfile.readlines()

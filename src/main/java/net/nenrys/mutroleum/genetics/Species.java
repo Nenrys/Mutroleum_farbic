@@ -1,5 +1,7 @@
 package net.nenrys.mutroleum.genetics;
 
+import org.w3c.dom.Attr;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,11 +20,42 @@ public class Species {
 
     private final String NAME;
     private int stage;
+    private int[] attributes;
 
     public Species(String name) {
         this.NAME = name;
         this.stage = 1;
+
+        this.attributes = new int[]{1,1,1,1};
     }
+
+    public enum Attributes {
+        REGENERATION,
+        POWER,
+        DOMINANCE,
+        PRODUCTION
+    }
+
+    public int getStage() {return this.stage;}
+    public void setStage(int st) {this.stage = st;}
+
+    public int[] getAttributes(){return this.attributes;}
+    private int getAttribute(Attributes attr) {
+        return this.attributes[attr.ordinal()];
+    }
+    private void addtoAttribute(Attributes attr, int inc) {
+        this.attributes[attr.ordinal()] += inc;
+    }
+
+    public void addReg(int inc) {addtoAttribute(Attributes.REGENERATION,inc);}
+    public void addPow(int inc) {addtoAttribute(Attributes.POWER,inc);}
+    public void addDom(int inc) {addtoAttribute(Attributes.DOMINANCE, inc);}
+    public void addPro(int inc) {addtoAttribute(Attributes.PRODUCTION,inc);}
+
+    public int getReg() {return getAttribute(Attributes.REGENERATION);}
+    public int getPow() {return getAttribute(Attributes.POWER);}
+    public int getDom() {return getAttribute(Attributes.DOMINANCE);}
+    public int getPro() {return getAttribute(Attributes.PRODUCTION);}
 
     public Species() {
         this("__default__");

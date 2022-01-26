@@ -62,7 +62,8 @@ def writelang(lname,aname):
 
 def copymodel(mname):
     filedir = os.path.realpath(os.path.join(os.path.dirname(__file__),
-                                            '..', 'main', 'resources', 'assets', 'mutroleum', 'models', 'item'))
+                                            '..', 'main', 'resources', 'assets', 'mutroleum',
+                                            'models', 'item', 'templates'))
     newlines = []
     with open(os.path.join(filedir, 'itemmodeltemplate.json'), 'r') as jsonfile:
         filelines = jsonfile.readlines()
