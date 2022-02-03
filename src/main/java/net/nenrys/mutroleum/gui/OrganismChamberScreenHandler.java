@@ -14,14 +14,20 @@ import net.nenrys.mutroleum.genetics.IHasGenes;
 public class OrganismChamberScreenHandler extends ScreenHandler {
 
     private final Inventory inventory;
+    private final ScreenHandlerContext context;
+
     public OrganismChamberScreenHandler(int syncId, PlayerInventory playerInventory) {
-        this(syncId,playerInventory,new SimpleInventory(2));
+        this(syncId,playerInventory,new SimpleInventory(2), ScreenHandlerContext.EMPTY);
+    }
+    public OrganismChamberScreenHandler(int syncId, PlayerInventory playerInventory, ScreenHandlerContext context) {
+        this(syncId,playerInventory,new SimpleInventory(2), context);
     }
 
-    private OrganismChamberScreenHandler(int syncId, PlayerInventory playerInventory, Inventory inventory) {
+    private OrganismChamberScreenHandler(int syncId, PlayerInventory playerInventory, Inventory inventory, ScreenHandlerContext context) {
         super(Guis.ORGANISM_CHAMBER_SCREEN_HANLDER, syncId);
         checkSize(inventory, 2);
         this.inventory = inventory;
+        this.context = context;
         //some inventories do custom logic when a player opens it.
         inventory.onOpen(playerInventory.player);
 
@@ -31,7 +37,7 @@ public class OrganismChamberScreenHandler extends ScreenHandler {
         int l;
         //Our inventory
         for (m = 0; m < 2; ++m) {
-            this.addSlot(new Slot(inventory,  m, 90 + m*50, 35){
+            this.addSlot(new Slot(inventory,  m, 90 + m*46, 35){
 
                 @Override
                 public boolean canInsert(ItemStack stack) {
@@ -60,8 +66,7 @@ public class OrganismChamberScreenHandler extends ScreenHandler {
     @Override
     public void close(PlayerEntity player) {
         super.close(player);
-        player.giveItemStack(this.inventory.getStack(0));
-        player.giveItemStack(this.inventory.getStack(1));
+        this.context.run((world, pos) -> this.dropInventory(player, this.inventory));
     }
 
     @Override
@@ -73,7 +78,7 @@ public class OrganismChamberScreenHandler extends ScreenHandler {
     public ItemStack transferSlot(PlayerEntity player, int invSlot) {
         ItemStack newStack = ItemStack.EMPTY;
         Slot slot = this.slots.get(invSlot);
-        if (slot != null && slot.hasStack()) {
+        if (slot.hasStack()) {
             ItemStack originalStack = slot.getStack();
             newStack = originalStack.copy();
             if (invSlot < this.inventory.size()) {
