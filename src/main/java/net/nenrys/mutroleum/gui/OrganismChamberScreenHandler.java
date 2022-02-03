@@ -10,6 +10,7 @@ import net.minecraft.screen.ScreenHandlerContext;
 import net.minecraft.screen.ScreenHandlerType;
 import net.minecraft.screen.slot.Slot;
 import net.nenrys.mutroleum.genetics.IHasGenes;
+import org.lwjgl.system.CallbackI;
 
 public class OrganismChamberScreenHandler extends ScreenHandler {
 
@@ -36,20 +37,24 @@ public class OrganismChamberScreenHandler extends ScreenHandler {
         int m;
         int l;
         //Our inventory
-        for (m = 0; m < 2; ++m) {
-            this.addSlot(new Slot(inventory,  m, 90 + m*46, 35){
+        this.addSlot(new Slot(inventory, 0,90,35){
+            @Override
+            public boolean canInsert(ItemStack stack) {
+                return stack.getItem() instanceof IHasGenes;
+            }
 
-                @Override
-                public boolean canInsert(ItemStack stack) {
-                    return stack.getItem() instanceof IHasGenes;
-                }
+            @Override
+            public int getMaxItemCount() {
+                return 1;
+            }
+        });
+        this.addSlot(new Slot(inventory,1,90+46,35) {
+            @Override
+            public boolean canInsert(ItemStack stack) {
+                return false;
+            }
+        });
 
-                @Override
-                public int getMaxItemCount() {
-                    return 1;
-                }
-            });
-        }
         //The player inventory
         for (m = 0; m < 3; ++m) {
             for (l = 0; l < 9; ++l) {

@@ -88,9 +88,9 @@ public interface IHasGenes {
             }
         }
 
-        int reg = Integer.parseInt(speciesstring.substring(attrsindex+3)) -1;
-        int pow = Integer.parseInt(speciesstring.substring(attrsindex+4)) -1;
-        int dom = Integer.parseInt(speciesstring.substring(attrsindex+5)) -1;
+        int reg = Integer.parseInt(speciesstring.substring(attrsindex+3, attrsindex + 4)) -1;
+        int pow = Integer.parseInt(speciesstring.substring(attrsindex+4,attrsindex+5)) -1;
+        int dom = Integer.parseInt(speciesstring.substring(attrsindex+5,attrsindex+6)) -1;
         int pro = Integer.parseInt(speciesstring.substring(attrsindex+6)) -1;
         species.addReg(reg);
         species.addPow(pow);
